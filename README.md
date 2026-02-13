@@ -138,8 +138,8 @@ normalize-scale, asset registry, loader exports).
 
 ## Documentation
 
-Full documentation is available at [/xxr/docs](/xxr/docs) when running the dev
-server, or browse the source in [`src/xxr/docs/`](./src/xxr/docs/).
+Full documentation is available at [/xxr/docs](https://xxr.app/xxr/docs) or
+browse the source in [`src/xxr/docs/`](./src/xxr/docs/).
 
 ## License
 
