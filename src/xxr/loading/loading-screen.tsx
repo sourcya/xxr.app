@@ -15,6 +15,11 @@ const KEYFRAMES_CSS = `
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes xxr-indeterminate {
+  0% { left: -40%; }
+  50% { left: 100%; }
+  100% { left: -40%; }
+}
 `
 
 const ensureKeyframes = () => {
@@ -58,10 +63,6 @@ export const LoadingScreen = ({ progress, withProgress }: LoadingScreenProps) =>
 
   if (gone) return null
 
-  const pct = withProgress ? progress.progress : 0
-  const countLabel = progress.total > 0
-    ? `${progress.loaded} / ${progress.total} assets`
-    : 'Preparing…'
 
   return (
     <div
@@ -107,39 +108,27 @@ export const LoadingScreen = ({ progress, withProgress }: LoadingScreenProps) =>
 
       {/* Progress section */}
       {withProgress && (
-        <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, width: 240 }}>
+        <div style={{ marginTop: 24, width: 240 }}>
           {/* Track */}
           <div style={{
+            position: 'relative',
             width: '100%',
             height: 4,
             background: 'rgba(255,255,255,0.06)',
             borderRadius: 4,
             overflow: 'hidden',
           }}>
-            {/* Fill */}
+            {/* Indeterminate fill */}
             <div style={{
+              position: 'absolute',
               height: '100%',
-              width: `${pct}%`,
+              width: '40%',
               borderRadius: 4,
               background: 'linear-gradient(90deg, #5b6abf, #7c8aff, #a78bfa)',
               backgroundSize: '200% 100%',
-              animation: 'xxr-shimmer 1.5s linear infinite',
-              transition: 'width 0.35s ease-out',
+              animation: 'xxr-indeterminate 1.8s ease-in-out infinite, xxr-shimmer 1.5s linear infinite',
               boxShadow: '0 0 8px rgba(124,138,255,0.4)',
             }} />
-          </div>
-
-          {/* Percentage + count */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            fontSize: 11,
-            color: 'rgba(255,255,255,0.35)',
-            fontVariantNumeric: 'tabular-nums',
-          }}>
-            <span>{countLabel}</span>
-            <span>{pct}%</span>
           </div>
         </div>
       )}

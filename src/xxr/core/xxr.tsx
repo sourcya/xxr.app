@@ -97,10 +97,11 @@ export const XXR = ({ start, devtools = false, withXR = false, withLoading = fal
     home,
     playerPosition,
     setPlayerPosition,
+    loading: withLoading && loadingProgress.active,
     devtools,
     camera,
     orbit,
-  }), [state.activeScene, state.transition, sceneIds, navigate, back, home, playerPosition, setPlayerPosition, devtools, camera, orbit])
+  }), [state.activeScene, state.transition, sceneIds, navigate, back, home, playerPosition, setPlayerPosition, withLoading, loadingProgress.active, devtools, camera, orbit])
 
   const content = (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>

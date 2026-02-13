@@ -1,6 +1,7 @@
 import { Html } from '@react-three/drei'
 import type { ReactNode } from 'react'
 import type { Vec3 } from '../../core/types'
+import { useXXR } from '../../core/context'
 
 export type R3FHtmlProps = {
   readonly position: Vec3
@@ -10,7 +11,8 @@ export type R3FHtmlProps = {
 }
 
 export const R3FHtml = ({ position, children, visible = true, interactive = false }: R3FHtmlProps) => {
-  if (!visible) return null
+  const { loading } = useXXR()
+  if (!visible || loading) return null
 
   return (
     <Html

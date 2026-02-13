@@ -10,6 +10,7 @@ export type XXRContextValue = {
   readonly home: () => void
   readonly playerPosition: Vec3
   readonly setPlayerPosition: (pos: Vec3) => void
+  readonly loading: boolean
   readonly devtools: boolean
   readonly camera?: CameraConfig
   readonly orbit?: OrbitConfig
