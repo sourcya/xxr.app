@@ -3,7 +3,7 @@ import helmetUrl from '../../xxr/examples/assets/damaged-helmet.glb?url'
 import duckUrl from '../../xxr/examples/assets/duck.glb?url'
 
 export const Experience = () => (
-  <XXR start="welcome" withXR>
+  <XXR start="welcome" withXR withLoading withProgress>
     <Assets>
       <GLB id="helmet" src={helmetUrl} />
       <GLB id="duck" src={duckUrl} />
